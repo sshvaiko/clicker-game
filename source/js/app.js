@@ -250,6 +250,7 @@
      */
     endGame() {
       alert('The end.');
+      location.reload();
     }
 
     set Round(value) {
