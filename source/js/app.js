@@ -7,6 +7,7 @@
   const countdownElement = $('.js-countdown-text');
   const roundNumber = $('.js-round');
   const attempts = $('.js-attempts');
+  const attemptsLabel1 = $('.js-attempts-label-1');
   const attemptsLabel = $('.js-attempts-label');
   const resultFalse = $('.game__result_false');
   const resultTrue = $('.game__result_true');
@@ -183,6 +184,7 @@
       clearInterval(intervalId);
       this.attemptsNumber = 3;
       attempts.text(3);
+      attemptsLabel.text('ошибки');
       resultFalse.fadeOut('fast');
       peopleContainer.removeClass('false');
     }
@@ -216,10 +218,13 @@
         this.attemptsNumber--;
         attempts.text(this.attemptsNumber);
         if (this.attemptsNumber == 1) {
+          attemptsLabel1.text('осталась');
           attemptsLabel.text('ошибка');
         } else if (this.attemptsNumber == 0) {
+          attemptsLabel1.text('осталось');
           attemptsLabel.text('ошибок');
         } else {
+          attemptsLabel1.text('осталось');
           attemptsLabel.text('ошибки');
         }
 
@@ -249,7 +254,7 @@
      * Ends the game
      */
     endGame() {
-      alert('The end.');
+      alert('Конец игры');
       location.reload();
     }
 
