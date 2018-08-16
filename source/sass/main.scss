@@ -1,0 +1,332 @@
+@import "theme_variables";
+
+// Modules
+@import 'bootstrap/bootstrap-grid';
+@import 'bootstrap/bootstrap-reboot';
+@import 'bootstrap/_type';
+@import 'bootstrap/_buttons';
+@import 'bootstrap/utilities/_sizing';
+@import 'bootstrap/utilities/_position';
+@import 'bootstrap/utilities/_text';
+@import 'bootstrap/utilities/_flex';
+@import 'bootstrap/utilities/_display';
+@import 'bootstrap/utilities/_float';
+@import 'bootstrap/utilities/_visibility';
+@import 'bootstrap/utilities/_spacing';
+@import 'modules/_elements';
+@import 'modules/_mixins';
+
+// Theme styles
+body {
+  font-size: $font-size-body;
+}
+body, html {
+  height: 100%;
+}
+img {
+  max-width: 100%;
+}
+
+// Main container and content
+.game-container {
+  margin: 100px auto;
+  background: url('../images/bg.png') no-repeat center;
+  width: 835px;
+  max-width: 100%;
+  height: 552px;
+  position: relative;
+  @include breakpoint(md) {
+    margin: 0;
+    background: none;
+  }
+}
+.game__content {
+  position: relative;
+  background: #fff;
+  margin: 38px 20px 20px 20px;
+  width: 685px;
+  max-width: 100%;
+  min-height: 490px;
+  border-radius: 18px;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.7);
+  @include breakpoint(md) {
+    margin: 50px 0;
+    margin-bottom: 0;
+    padding: 0 10px;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+// Progress bar
+.game__progress {
+  width: 475px;
+  max-width: 100%;
+  height: 46px;
+  border: 5px #d02f6b solid;
+  border-radius: 35px;
+  margin: 0 auto;
+  position: relative;
+  top: -28px;
+  overflow: hidden;
+  background: #fff;
+  z-index: 15;
+  padding: 5px;
+  position: relative;
+  .line {
+    background: url(../images/progress-line-bg.png) repeat-x left bottom;
+    height: 18px;
+    width: 100%;
+    margin-top: 3px;
+    border-radius: 20px;
+    .active-line {
+      height: 100%;
+      background: url(../images/progress-line-bg.png) repeat-x left top;
+    }
+  }
+  .point {
+    width: 36px;
+    height: 36px;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff336a+52,e400a1+100 */
+    background: #ff336a; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ff336a 52%, #e400a1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ff336a 52%,#e400a1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ff336a 52%,#e400a1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:before {
+      content: "";
+      background: url('../images/progress-icons.png');
+      width: 22px;
+      height: 22px;
+      left: 5px;
+      top: 4px;
+      position: absolute;
+    }
+    &.active {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b9da05+29,47c800+93 */
+      background: #b9da05; /* Old browsers */
+      background: -moz-linear-gradient(top, #b9da05 29%, #47c800 93%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, #b9da05 29%,#47c800 93%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, #b9da05 29%,#47c800 93%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9da05', endColorstr='#47c800',GradientType=0 ); /* IE6-9 */
+      &:before {
+        background-position: center bottom;
+      }
+    }
+    &.p2 {
+      left: 33%;
+    }
+    &.p3 {
+      left: 66%;
+    }
+    &.p4 {
+      left: 100%;
+      margin-left: -36px;
+    }
+  }
+}
+
+// Counter
+.game__counter {
+  color: #fff;
+  position: absolute;
+  top: 45px;
+  right: 21px;
+  @include breakpoint(md) {
+    position: static;
+    color: #000;
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  p {
+    margin: 0;
+  }
+  .n {
+    font-weight: bold;
+    color: #fff;
+    font-size: 60px;
+    background: url('../images/n-bg.png') no-repeat;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.7);
+    border-radius: 9px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    margin-top: 8px;
+  }
+}
+
+// People
+.game__people {
+  margin-top: 55px;
+  padding: 0 70px;
+  @include breakpoint(md) {
+    padding: 0 20px;
+    margin-top: 30px;
+  }
+  &.false {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .item {
+    overflow: hidden;
+    position: relative;
+    margin: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out;
+    width: 120px;
+    height: 120px;
+    &.disabled {
+      &:before {
+        content: "Мимо!";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        font-size: 15px;
+        line-height: 120px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4db1db+0,75cce8+100 */
+        background: #4db1db; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #4db1db 0%, #75cce8 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #4db1db 0%,#75cce8 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #4db1db 0%,#75cce8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4db1db', endColorstr='#75cce8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      }
+    }
+    &:not(.disabled):before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      border-radius: 50%;
+      box-shadow: inset 0px 0px 0px 3px $light-pink;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+    }
+    .price {
+      position: absolute;
+      bottom: 0;
+      background: $light-pink;
+      width: 100%;
+      font-size: 10px;
+      color: #fff;
+      padding: 2px;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+    }
+    &:not(.disabled):hover {
+      box-shadow: 0px 9px 9px 0px rgba(143, 20, 72, 0.38);
+      &:before, .price {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Results
+.game__result_false {
+  border-radius: 20px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3461+0,ff4683+100 */
+  background: #ff3461; /* Old browsers */
+  background: -moz-linear-gradient(left, #ff3461 0%, #ff4683 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #ff3461 0%,#ff4683 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ff3461 0%,#ff4683 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3461', endColorstr='#ff4683',GradientType=1 ); /* IE6-9 */
+  box-shadow: 0px 2px 6px 0px rgba(14, 47, 64, 0.35);
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  padding: 14px;
+  z-index: 20;
+  color: #fff;
+  h3 {
+    color: #fff;
+  }
+  button {
+    @include breakpoint(md) {
+      margin: 10px 0;
+    }
+  }
+  .countdown {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    display: inline-block;
+    span {
+      left: 0;
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 64px;
+    }
+  }
+  &.hidden {
+    display: none;
+  }
+}
+.game__result_true {
+  position: absolute;
+  background: RGBA(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  border-radius: 18px;
+  padding: 85px 50px;
+  @include breakpoint(md) {
+    border-radius: 0;
+    top: 0;
+  }
+  h3 {
+    color: #fff;
+  }
+  .result {
+    font-size: 48px;
+    color: $green;
+    font-weight: bold;
+  }
+  .photo {
+    border: 4px #fff solid;
+    border-radius: 50%;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 0px 170px 19px rgba(163, 225, 43, 0.85);
+    img {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+    &:after {
+      position: absolute;
+      content: "";
+      width: 60px;
+      height: 60px;
+      background: #b9da05;
+      background: url('../images/icon-checkbox.svg') no-repeat center center,linear-gradient(to bottom, #b9da05 29%,#47c800 93%);
+      border-radius: 50%;
+      border: 2px #fff solid;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  &.hidden {
+    display: none;
+  }
+}

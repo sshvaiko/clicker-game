@@ -1,0 +1,53 @@
+extends layouts/default
+
+block content
+	.container.d-lg-flex.h-100.align-items-center
+		.game-container
+			
+			//- Counter
+			.game__counter.text-center
+					p.label У вас осталось
+					.n.d-inline-block.js-attempts 3
+					p.label: strong.js-attempts-label ошибки
+					
+			//- Main content
+			.game__content.text-center
+				
+				//- Result False
+				.game__result_false.text-center.text-md-left.hidden
+					.row
+						.col-md-2.align-self-center
+							.countdown.text-center
+								span.js-countdown-text 10
+								.js-countdown
+						.col-md-6.align-self-center
+							h3.mb-1 Вы не угадали 3 раза
+							p.mb-0 Подождите или пропустите за 1 ФМ
+						.col-md-4.text-center.text-md-right
+							span.d-inline-block.text-center
+								button.btn.btn-blue.mb-1.js-skip Пропустить
+								p.mb-0 1 Фм
+				
+				//- Result True
+				.game__result_true.text-center.align-items-center.justify-content-center.hidden
+					.content
+						.photo.d-inline-block.mb-4
+							img(src="http://via.placeholder.com/200x200", alt="")
+						h3 Поздравляем, вы угадали!
+						.result + 23 526
+								
+				//- Progress bar
+				.game__progress
+					.line
+						.active-line(style="width: 0%;")
+					.point.p1
+					.point.p2
+					.point.p3
+					.point.p4
+				h3 Раунд 
+					span.js-round 1
+				p.js-question Угадайте кто вас лайкнул в Фотоконкурсе быстрее соперников	
+				
+				//- People
+				.game__people.js-container.text-center
+			
