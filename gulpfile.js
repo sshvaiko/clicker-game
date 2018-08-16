@@ -29,6 +29,7 @@ var plugins = [
 
 // Scripts
 const scriptsOrder = [
+  'node_modules/babel-polyfill/dist/polyfill.js',
   'source/js/libs/progressbar.min.js',
   'source/js/app.js'
 ];

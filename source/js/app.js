@@ -96,7 +96,6 @@
 
       // our template
       let template = `<div class="item d-inline-block" data-id="${i}">
-              <p class="d-none">2</p>
               <img src="${item.picture.large}" alt="${fullName}">
               <div class="price">0,3 ФМ</div>
             </div>`;
